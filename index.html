@@ -72,6 +72,10 @@
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height .3s ease-in-out; }
         .faq-question svg { transition: transform .3s ease-in-out; }
         .faq-question svg.rotate-45 { transform: rotate(45deg); }
+        /* Add scroll margin to sections to prevent them from being covered by the sticky header */
+        section[id] {
+            scroll-margin-top: 5rem; /* Adjust this value based on your header's height */
+        }
     </style>
 
     <!-- JSON-LD SCHEMA (Organization + Website + Breadcrumb + Collection + FAQ) -->
@@ -204,31 +208,34 @@
 </head>
 
 <body class="min-h-screen">
-
-       <!-- Header & Navigation -->
-    <header class="bg-gray-900 shadow-xl sticky top-0 z-40">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="flex items-center space-x-3">
-                <img src="assets/logo/Myan-slot-logo.webp" alt="Myanmar Slots Logo" class="h-12 w-auto">
-            </a>
-                        <nav id="nav-menu" class="hidden md:flex items-center space-x-6 absolute md:static top-full left-0 right-0 md:right-auto md:top-auto bg-gray-900 md:bg-transparent p-4 md:p-0 flex-col md:flex-row z-50 w-full md:w-auto shadow-lg md:shadow-none md:space-y-0 space-y-2">
-                <a href="#top-sites" class="text-center text-gray-300 hover:text-yellow-400 transition duration-150 font-semibold py-3 md:py-0 px-4 md:px-0 block md:inline rounded-md md:rounded-none hover:bg-gray-800 md:hover:bg-transparent">Top Sites</a>
-                <a href="#how-to-play" class="text-center text-gray-300 hover:text-yellow-400 transition duration-150 font-semibold py-3 md:py-0 px-4 md:px-0 block md:inline rounded-md md:rounded-none hover:bg-gray-800 md:hover:bg-transparent">How To Play</a>
-                <a href="#faq" class="text-center text-gray-300 hover:text-yellow-400 transition duration-150 font-semibold py-3 md:py-0 px-4 md:px-0 block md:inline rounded-md md:rounded-none hover:bg-gray-800 md:hover:bg-transparent">FAQ</a>
-            </nav>
-            <div class="md:hidden">
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="text-white focus:outline-none p-2 rounded-md hover:bg-gray-800 transition duration-200" aria-label="Toggle menu">
-                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
+    <!-- Header & Navigation -->
+    <header id="navbar" class="fixed w-full z-50 transition-colors duration-300 bg-gray-800 md:bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <div class="flex items-center space-x-2">
+            <img src="assets/logo/Myan-slot-logo.webp" alt="Myanmar Slots Logo" class="h-12 w-auto" fetchpriority="high"/>
+          </div>
+          <nav class="hidden md:flex space-x-6 text-white">
+            <a href="#top-sites" class="hover:text-yellow-400 hover:underline">Top Sites</a>
+            <a href="#how-to-play" class="hover:text-yellow-400 hover:underline">How To Play</a>
+            <a href="#faq" class="hover:text-yellow-400 hover:underline">FAQ</a>
+          </nav>
+          <button id="mobile-menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-white text-3xl focus:outline-none">
+            ☰
+          </button>
         </div>
-    </header>
+        <div id="mobile-menu" class="hidden md:hidden">
+          <nav class="px-2 pt-2 pb-3 space-y-1 bg-gray-800">
+            <a href="#top-sites" class="text-white hover:text-yellow-400 block px-3 py-2 rounded-md text-base font-medium hover:underline">Top Sites</a>
+            <a href="#how-to-play" class="text-white hover:text-yellow-400 block px-3 py-2 rounded-md text-base font-medium hover:underline">How To Play</a>
+            <a href="#faq" class="text-white hover:text-yellow-400 block px-3 py-2 rounded-md text-base font-medium hover:underline">FAQ</a>
+          </nav>
+        </div>
+      </header>
     <!-- Main Content -->
-    <main>
+    <main class="pt-20">
         <!-- Hero Section -->
-        <section class="relative bg-gray-900 py-16 md:py-24 overflow-hidden border-b-4 border-yellow-500 section-bg" style="background-image: url('assets/image/background-image-1.webp');">
+        <section class="relative bg-gray-900 py-16 md:py-24 overflow-hidden border-b-4 border-yellow-500">
+            <img src="assets/image/background-image-1.webp" alt="Abstract background with glowing slot machine elements" class="absolute inset-0 w-full h-full object-cover opacity-30">
             <div class="container mx-auto px-4 text-center relative z-10">
                 <h1 class="text-4xl sm:text-6xl font-extrabold mb-4 text-white">
                     <span class="text-yellow-400">မြန်မာစလော့ (Myanmar Slots)</span> <br class="sm:hidden"> အကောင်းဆုံး အွန်လိုင်းစလော့ ဘောနပ်စ်များ
@@ -613,41 +620,37 @@
         });
     });
 
-        // filepath: /Users/thurasoe/Documents/Coding/Steller Blue (ADM)/myanslots-seo/index.html
-    
-        // --- Mobile Menu Toggle Script ---
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const navMenu = document.getElementById('nav-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const closeIcon = document.getElementById('close-icon');
-        const navLinks = navMenu.querySelectorAll('a');
-    
-        if (mobileMenuBtn && navMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                const isHidden = navMenu.classList.contains('hidden');
-                
-                if (isHidden) {
-                    // Open menu
-                    navMenu.classList.remove('hidden');
-                    menuIcon.classList.add('hidden');
-                    closeIcon.classList.remove('hidden');
-                } else {
-                    // Close menu
-                    navMenu.classList.add('hidden');
-                    menuIcon.classList.remove('hidden');
-                    closeIcon.classList.add('hidden');
-                }
-            });
-    
-            // Close menu when a link is clicked
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    navMenu.classList.add('hidden');
-                    menuIcon.classList.remove('hidden');
-                    closeIcon.classList.add('hidden');
-                });
-            });
+    // --- Navbar Scroll & Mobile Menu Script ---
+    const navbar = document.getElementById('navbar');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+    // Change navbar background on scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            navbar.classList.add('bg-gray-800');
+            navbar.classList.remove('md:bg-transparent');
+        } else {
+            navbar.classList.remove('bg-gray-800');
+            navbar.classList.add('md:bg-transparent');
         }
+    });
+
+    // Toggle mobile menu
+    mobileMenuButton.addEventListener('click', () => {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+        });
+    });
     </script>
 </body>
 </html>
