@@ -350,6 +350,14 @@
         .a80-top-bar p, .a80-slogan-strip p { word-wrap: break-word !important; overflow-wrap: break-word !important; }
         .down-item { width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; }
         .down-item .down-wrapper { flex-wrap: wrap !important; }
+        /* 手機版右側紅色圓形按鈕縮小 */
+        .br_right_bar .right-item {
+          width: 36px !important; height: 36px !important; min-width: 36px !important; min-height: 36px !important;
+          border-radius: 50% !important;
+        }
+        .br_right_bar .right-item > div {
+          width: 100% !important; height: 100% !important; background-size: 60% !important; background-position: center !important; background-repeat: no-repeat !important;
+        }
       }
       @media screen and (max-width: 480px) {
         html, body { overflow-x: hidden !important; }
