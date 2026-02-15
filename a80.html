@@ -9,7 +9,7 @@
     />
     <meta
       name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"
+      content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1, viewport-fit=cover"
     />
     <title>a80 - မြန်မာ့နံပါတ်တစ် Crypto Casino | Myanmar Slots</title>
     <link rel="canonical" href="https://myanslots.com/a80.html" />
@@ -328,6 +328,33 @@
       type="text/javascript"
       charset="UTF-8"
     ></script>
+    <style id="a80-mobile-full">
+      /* 手機完整呈現：禁止整頁橫向捲動，內容自適應寬度 */
+      @media screen and (max-width: 768px) {
+        html, body { overflow-x: hidden !important; max-width: 100% !important; width: 100% !important; }
+        #app, .header, .header_title, .header_bottom { max-width: 100% !important; }
+        .game-banner { max-width: 100% !important; overflow: hidden !important; }
+        .game-banner .swiper-container,
+        .game-banner .swiper-wrapper { max-width: 100% !important; }
+        .game-banner .swiper-slide { width: 100% !important; min-width: 100% !important; max-width: 100% !important; }
+        .game-banner .banner-img { width: 100% !important; max-width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; }
+        .br_index_main, .home-entry, .hot-wrapper, .home-item-wrapper { max-width: 100% !important; width: 100% !important; padding-left: 12px !important; padding-right: 12px !important; box-sizing: border-box !important; }
+        .hot-game, .home-game { padding-left: 16px !important; padding-right: 16px !important; }
+        .header_nav { flex-wrap: wrap !important; }
+        .header_nav_list { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; }
+        .header_nav .common-logo.logo { max-width: 120px !important; height: auto !important; }
+        .header_top .wrapper { max-width: 100% !important; padding-left: 8px !important; padding-right: 8px !important; }
+        .a80-top-bar, .a80-slogan-strip { max-width: 100% !important; box-sizing: border-box !important; }
+        .a80-top-bar p, .a80-slogan-strip p { word-wrap: break-word !important; overflow-wrap: break-word !important; }
+        .down-item { width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; }
+        .down-item .down-wrapper { flex-wrap: wrap !important; }
+      }
+      @media screen and (max-width: 480px) {
+        html, body { overflow-x: hidden !important; }
+        .game-banner .swiper-slide { width: 100% !important; min-width: 100% !important; }
+        .br_index_main, .home-entry { padding-left: 10px !important; padding-right: 10px !important; }
+      }
+    </style>
   </head>
   <body class="_style" style="">
     <div class="a80-top-bar" style="background:#1f2937;padding:10px 12px;text-align:center;border-bottom:1px solid rgba(245,158,11,0.3);box-sizing:border-box;">
@@ -9450,7 +9477,18 @@
       </div>
     </div>
     <script>
+      function a80MobileLayout() {
+        var w = window.innerWidth || document.documentElement.clientWidth;
+        var isMobile = w <= 768;
+        var slides = document.querySelectorAll('.game-banner .swiper-slide');
+        slides.forEach(function(s) { s.style.width = isMobile ? '100%' : '1200px'; });
+        if (isMobile && typeof window.dispatchEvent === 'function') {
+          window.dispatchEvent(new Event('resize'));
+        }
+      }
       document.addEventListener('DOMContentLoaded', function() {
+        a80MobileLayout();
+        window.addEventListener('resize', a80MobileLayout);
         var notice = document.getElementById('a80-deposit-notice');
         var msg = 'သင်သည် ငွေမဖြည့်သွင်းရသေးသောကြောင့် ဝင်ရောက်၍မရပါ။';
 
