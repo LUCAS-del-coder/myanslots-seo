@@ -163,6 +163,20 @@
       }
     </style>
     <style type="text/css">
+      /* 移除導航列下方白線 */
+      .header,
+      .header_title,
+      .header_bottom,
+      .header_nav,
+      .header_holder,
+      .game-banner {
+        border: none !important;
+        border-bottom: none !important;
+        border-top: none !important;
+        box-shadow: none !important;
+      }
+    </style>
+    <style type="text/css">
       .vue-dialog div {
         box-sizing: border-box;
       }
@@ -3037,6 +3051,10 @@
         <!---->
         <!---->
         <!---->
+      </div>
+      <div class="a80-slogan-strip" style="background:linear-gradient(135deg,#1e3a5f 0%,#0f172a 100%);padding:12px 20px;text-align:center;">
+        <p style="margin:0 0 4px 0;color:#f59e0b;font-weight:700;font-size:16px;">မြန်မာနိုင်ငံအကြီးဆုံး ကရစ်ပ္တိုငွေကြေးကာစီနို</p>
+        <p style="margin:0;color:#e5e7eb;font-size:14px;">ပထမဆုံးငွေဖြည့်ချိန် နှစ်ဆဘောနပ်စ်</p>
       </div>
       <div class="game-banner">
         <div
@@ -9363,36 +9381,36 @@
     </div>
     <div id="a80-register-modal" style="display:none;position:fixed;inset:0;z-index:999998;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;padding:20px;box-sizing:border-box;" onclick="if(event.target===this) this.style.display='none'">
       <div style="background:#1f2937;border:2px solid #f59e0b;border-radius:12px;padding:28px;max-width:380px;width:100%;" onclick="event.stopPropagation()">
-        <p style="color:#f59e0b;font-weight:700;font-size:18px;margin:0 0 16px 0;text-align:center;">註冊</p>
+        <p style="color:#f59e0b;font-weight:700;font-size:18px;margin:0 0 16px 0;text-align:center;">စာရင်းသွင်းရန်</p>
         <div style="margin-bottom:12px;">
-          <label style="display:block;color:#e5e7eb;font-size:13px;margin-bottom:4px;">帳號</label>
-          <input type="text" id="a80-reg-username" placeholder="請輸入帳號" style="width:100%;padding:8px 12px;border:1px solid #4b5563;border-radius:6px;background:#111827;color:#fff;box-sizing:border-box;">
+          <label style="display:block;color:#e5e7eb;font-size:13px;margin-bottom:4px;">နာမည်</label>
+          <input type="text" id="a80-reg-username" placeholder="နာမည်ထည့်ပါ" style="width:100%;padding:8px 12px;border:1px solid #4b5563;border-radius:6px;background:#111827;color:#fff;box-sizing:border-box;">
         </div>
         <div style="margin-bottom:12px;">
-          <label style="display:block;color:#e5e7eb;font-size:13px;margin-bottom:4px;">密碼</label>
-          <input type="password" id="a80-reg-password" placeholder="請輸入密碼" style="width:100%;padding:8px 12px;border:1px solid #4b5563;border-radius:6px;background:#111827;color:#fff;box-sizing:border-box;">
+          <label style="display:block;color:#e5e7eb;font-size:13px;margin-bottom:4px;">စကားဝှက်</label>
+          <input type="password" id="a80-reg-password" placeholder="စကားဝှက်ထည့်ပါ" style="width:100%;padding:8px 12px;border:1px solid #4b5563;border-radius:6px;background:#111827;color:#fff;box-sizing:border-box;">
         </div>
         <div style="margin-bottom:12px;">
-          <label style="display:block;color:#e5e7eb;font-size:13px;margin-bottom:4px;">確認密碼</label>
-          <input type="password" id="a80-reg-password2" placeholder="請再次輸入密碼" style="width:100%;padding:8px 12px;border:1px solid #4b5563;border-radius:6px;background:#111827;color:#fff;box-sizing:border-box;">
+          <label style="display:block;color:#e5e7eb;font-size:13px;margin-bottom:4px;">စကားဝှက်အတည်ပြုပါ</label>
+          <input type="password" id="a80-reg-password2" placeholder="စကားဝှက်ပြန်ထည့်ပါ" style="width:100%;padding:8px 12px;border:1px solid #4b5563;border-radius:6px;background:#111827;color:#fff;box-sizing:border-box;">
         </div>
-        <p style="color:#9ca3af;font-size:12px;margin:0 0 16px 0;">註冊完直接登入</p>
-        <button type="button" id="a80-register-confirm" style="width:100%;background:#f59e0b;color:#1f2937;border:none;padding:10px;border-radius:8px;font-weight:700;cursor:pointer;">確認</button>
+        <p style="color:#9ca3af;font-size:12px;margin:0 0 16px 0;">စာရင်းသွင်းပြီး ချက်ချင်းဝင်ရောက်ပါမည်</p>
+        <button type="button" id="a80-register-confirm" style="width:100%;background:#f59e0b;color:#1f2937;border:none;padding:10px;border-radius:8px;font-weight:700;cursor:pointer;">အတည်ပြုပါ</button>
       </div>
     </div>
     <div id="a80-deposit-modal" style="display:none;position:fixed;inset:0;z-index:999998;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;padding:20px;box-sizing:border-box;" onclick="if(event.target===this) this.style.display='none'">
       <div style="background:#1f2937;border:2px solid #f59e0b;border-radius:12px;padding:28px;max-width:420px;width:100%;" onclick="event.stopPropagation()">
-        <p style="color:#f59e0b;font-weight:700;font-size:18px;margin:0 0 16px 0;text-align:center;">儲值</p>
+        <p style="color:#f59e0b;font-weight:700;font-size:18px;margin:0 0 16px 0;text-align:center;">Deposit</p>
         <div id="a80-deposit-choose" style="margin-bottom:16px;">
-          <p style="color:#e5e7eb;font-size:13px;margin-bottom:8px;">選擇鏈與幣種：</p>
+          <p style="color:#e5e7eb;font-size:13px;margin-bottom:8px;">Choose network &amp; currency:</p>
           <button type="button" data-addr="TYKfUgMmxDbpTvijwbP9BoRbuiYy4b3NRT" style="display:block;width:100%;padding:10px;margin-bottom:8px;background:#374151;color:#fff;border:1px solid #4b5563;border-radius:8px;cursor:pointer;text-align:left;">USDT TRC-20</button>
           <button type="button" data-addr="0x3033F7F8415f63579E348b12a5026F0126941588" style="display:block;width:100%;padding:10px;background:#374151;color:#fff;border:1px solid #4b5563;border-radius:8px;cursor:pointer;text-align:left;">USDC Ethereum</button>
         </div>
         <div id="a80-deposit-addr-wrap" style="display:none;">
-          <p style="color:#e5e7eb;font-size:13px;margin-bottom:6px;">充值地址：</p>
+          <p style="color:#e5e7eb;font-size:13px;margin-bottom:6px;">Deposit address:</p>
           <p id="a80-deposit-addr" style="word-break:break-all;color:#f59e0b;font-size:14px;margin:0 0 12px 0;padding:10px;background:#111827;border-radius:6px;"></p>
-          <button type="button" id="a80-copy-addr" style="width:100%;background:#10b981;color:#fff;border:none;padding:10px;border-radius:8px;font-weight:700;cursor:pointer;">一鍵複製</button>
-          <button type="button" id="a80-deposit-back" style="width:100%;margin-top:8px;background:#4b5563;color:#fff;border:none;padding:8px;border-radius:6px;cursor:pointer;">返回重選</button>
+          <button type="button" id="a80-copy-addr" style="width:100%;background:#10b981;color:#fff;border:none;padding:10px;border-radius:8px;font-weight:700;cursor:pointer;">Copy</button>
+          <button type="button" id="a80-deposit-back" style="width:100%;margin-top:8px;background:#4b5563;color:#fff;border:none;padding:8px;border-radius:6px;cursor:pointer;">Back</button>
         </div>
       </div>
     </div>
@@ -9465,9 +9483,9 @@
             var u = (document.getElementById('a80-reg-username') || {}).value || '';
             var p = (document.getElementById('a80-reg-password') || {}).value || '';
             var p2 = (document.getElementById('a80-reg-password2') || {}).value || '';
-            if (!u.trim()) { alert('請輸入帳號'); return; }
-            if (!p) { alert('請輸入密碼'); return; }
-            if (p !== p2) { alert('兩次密碼不一致'); return; }
+            if (!u.trim()) { alert('နာမည်ထည့်ပါ'); return; }
+            if (!p) { alert('စကားဝှက်ထည့်ပါ'); return; }
+            if (p !== p2) { alert('စကားဝှက် နှစ်ကြိမ်မကိုက်ညီပါ'); return; }
             localStorage.setItem(A80_USER, u.trim());
             regModal.style.display = 'none';
             document.getElementById('a80-reg-username').value = '';
@@ -9487,10 +9505,10 @@
           if (copyBtn) copyBtn.addEventListener('click', function() {
             var addr = depAddr.textContent;
             if (navigator.clipboard && navigator.clipboard.writeText) {
-              navigator.clipboard.writeText(addr).then(function() { copyBtn.textContent = '已複製'; setTimeout(function() { copyBtn.textContent = '一鍵複製'; }, 1500); });
+              navigator.clipboard.writeText(addr).then(function() { copyBtn.textContent = 'Copied'; setTimeout(function() { copyBtn.textContent = 'Copy'; }, 1500); });
             } else {
               var ta = document.createElement('textarea'); ta.value = addr; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-              copyBtn.textContent = '已複製'; setTimeout(function() { copyBtn.textContent = '一鍵複製'; }, 1500);
+              copyBtn.textContent = 'Copied'; setTimeout(function() { copyBtn.textContent = 'Copy'; }, 1500);
             }
           });
           if (backBtn) backBtn.addEventListener('click', function() {
