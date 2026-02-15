@@ -89,6 +89,11 @@
         section[id] {
             scroll-margin-top: 5rem; /* Adjust this value based on your header's height */
         }
+        /* 主頁 Hero 最大張背景圖：手機版確保顯示 */
+        @media (max-width: 768px) {
+            main > section:first-of-type { min-height: 40vh; }
+        }
+        .hero-bg-image { display: block !important; visibility: visible !important; z-index: 1; }
     </style>
 
     <!-- JSON-LD SCHEMA (Organization + Website + Breadcrumb + Collection + FAQ) -->
@@ -266,7 +271,7 @@
     <main>
         <!-- Hero Section -->
         <section class="relative bg-gray-900 pt-20 py-16 md:py-24 overflow-hidden border-b-4 border-yellow-500">
-            <img src="assets/image/background-image-1.webp" alt="Abstract background with glowing slot machine elements" class="absolute inset-0 w-full h-full object-cover opacity-30" fetchpriority="high" loading="eager">
+            <img src="assets/image/background-image-1.webp" alt="Abstract background with glowing slot machine elements" class="hero-bg-image absolute inset-0 w-full h-full object-cover opacity-30" fetchpriority="high" loading="eager">
             <div class="container mx-auto px-4 text-center relative z-10">
                 <p class="text-lg font-semibold text-green-400 mb-2">မြန်မာ အွန်လိုင်းဂိမ်း လမ်းညွှန်</p>
                 <h1 class="text-4xl sm:text-6xl font-extrabold mb-4 text-white">
@@ -315,7 +320,7 @@
 
         <!-- Top Affiliate Sites Section -->
         <section id="top-slots" class="py-16 md:py-20 bg-gray-800 relative section-bg">
-            <img src="assets/image/background-image-2.webp" alt="Abstract background for top sites section" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <img src="assets/image/background-image-2.webp" alt="Abstract background for top sites section" class="hero-bg-image absolute inset-0 w-full h-full object-cover" loading="lazy">
             <div class="container mx-auto px-4 relative z-10">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-yellow-400">
                     အကောင်းဆုံး မြန်မာစလော့ဂိမ်း ဝက်ဘ်ဆိုဒ် ၆ ခု
