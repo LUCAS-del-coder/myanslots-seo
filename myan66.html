@@ -7,134 +7,308 @@
     <meta name="description" content="Myan66 သည် မြန်မာနိုင်ငံအတွက် ထိပ်တန်း Crypto Casino ဖြစ်ပြီး Video Slots၊ Buffalo၊ ငါးပစ်ဂိမ်း၊ ဂျက်ပေါ့ စလော့များအပါအဝင် စလော့ဂိမ်းများစွာ ကစားနိုင်ပါသည်။">
     <link rel="canonical" href="https://myanslots.com/myan66.html">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com" defer></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
         :root {
-            --primary-color: #f59e0b;
-            --secondary-color: #10b981;
-            --background-dark: #1f2937;
+            --background: 220 30% 8%;
+            --foreground: 40 30% 92%;
+            --card: 220 25% 12%;
+            --card-foreground: 40 30% 92%;
+            --border: 220 20% 20%;
+            --primary: 40 85% 55%;
+            --primary-foreground: 220 30% 8%;
+            --secondary: 220 25% 16%;
+            --muted: 220 20% 18%;
+            --muted-foreground: 220 15% 55%;
+            --casino-red: 0 80% 50%;
+            --casino-green: 145 70% 45%;
+            --radius: 0.75rem;
         }
-        body { font-family: 'Inter', sans-serif; background-color: var(--background-dark); color: white; }
-        .article-content { max-width: 48rem; }
-        .article-content h2 { scroll-margin-top: 5rem; }
-        section[id] { scroll-margin-top: 5rem; }
-        .game-card { transition: transform 0.2s, box-shadow 0.2s; }
-        .game-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.2); }
+        body {
+            font-family: 'Noto Sans Myanmar', sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+        }
+        .gold-text {
+            background: linear-gradient(135deg, hsl(42 90% 65%), hsl(40 85% 55%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .game-card-hover {
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+        .game-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px hsl(40 85% 55% / 0.25);
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        [data-dialog-backdrop] {
+            background: rgba(0,0,0,0.6);
+        }
     </style>
 </head>
 <body class="min-h-screen">
-    <header id="navbar" class="fixed w-full z-50 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2">
-                <img src="assets/logo/Myan-slot-logo.webp" alt="Myanmar Slots Logo" class="h-12 w-auto"/>
-            </a>
-            <nav class="hidden md:flex space-x-4 text-white text-sm">
-                <a href="index.html" class="hover:text-yellow-400 hover:underline">Home</a>
-                <a href="article.html" class="hover:text-yellow-400 hover:underline">Article</a>
-                <a href="myan66.html" class="text-yellow-400 hover:underline">Myan66</a>
-                <a href="index.html#top-slots" class="hover:text-yellow-400 hover:underline">Top Slots</a>
-                <a href="index.html#faq" class="hover:text-yellow-400 hover:underline">FAQ</a>
-            </nav>
+    <!-- Navbar (promo style) -->
+    <header class="sticky top-0 z-50 bg-[hsl(var(--background))]/95 backdrop-blur border-b border-[hsl(var(--border))]">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between py-2">
+            <a href="index.html" class="text-gray-400 hover:text-yellow-400 text-sm mr-2">← Myanmar Slots</a>
+            <h1 class="text-2xl font-bold gold-text tracking-wide">🎰 MYAN66</h1>
+            <div class="flex items-center gap-2">
+                <button type="button" onclick="openDialog()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded text-sm font-semibold text-white bg-[hsl(var(--casino-red))] hover:opacity-90">
+                    စာရင်းသွင်းရန်
+                </button>
+                <button type="button" onclick="openDialog()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded text-sm font-semibold text-white bg-[hsl(var(--casino-green))] hover:opacity-90">
+                    ငွေဖြည့်ရန်
+                </button>
+            </div>
         </div>
+        <nav class="border-t border-[hsl(var(--border))] bg-[hsl(var(--secondary))]/50">
+            <div class="max-w-7xl mx-auto px-4 flex items-center gap-1 overflow-x-auto py-2 scrollbar-hide">
+                <button type="button" onclick="openDialog()" class="flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] hover:bg-[hsl(var(--muted))] whitespace-nowrap">ပင်မစာမျက်နှာ</button>
+                <button type="button" onclick="openDialog()" class="flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] hover:bg-[hsl(var(--muted))] whitespace-nowrap">စလော့</button>
+                <button type="button" onclick="openDialog()" class="flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] hover:bg-[hsl(var(--muted))] whitespace-nowrap">ငါးပစ်</button>
+                <button type="button" onclick="openDialog()" class="flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] hover:bg-[hsl(var(--muted))] whitespace-nowrap">တိုက်ရိုက်</button>
+                <button type="button" onclick="openDialog()" class="flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] hover:bg-[hsl(var(--muted))] whitespace-nowrap">ဗဟိုမှူး</button>
+                <button type="button" onclick="openDialog()" class="flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] hover:bg-[hsl(var(--muted))] whitespace-nowrap">အားကစား</button>
+                <button type="button" onclick="openDialog()" class="flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] hover:bg-[hsl(var(--muted))] whitespace-nowrap">E-Sports</button>
+                <button type="button" onclick="openDialog()" class="flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] hover:bg-[hsl(var(--muted))] whitespace-nowrap">ပရိုမိုရှင်း</button>
+            </div>
+        </nav>
     </header>
 
-    <main class="pt-24 pb-16 px-4">
-        <div class="max-w-4xl mx-auto">
-            <nav class="mb-6 text-sm" aria-label="Breadcrumb">
-                <ol class="flex items-center space-x-2 text-gray-400">
-                    <li><a href="index.html" class="hover:text-yellow-400 transition-colors">Home</a></li>
-                    <li><span aria-hidden="true">/</span></li>
-                    <li class="text-yellow-400">Myan66 - စလော့ဂိမ်းများ</li>
-                </ol>
-            </nav>
-
-            <article class="article-content mx-auto space-y-6 text-gray-200">
-                <h1 class="text-3xl md:text-4xl font-bold text-yellow-400">
-                    Myan66 - မြန်မာ့နံပါတ်တစ် Crypto Casino စလော့ဂိမ်းများ
-                </h1>
-                <p class="text-lg text-gray-300">
-                    <strong class="text-yellow-400">Myan66</strong> သည် မြန်မာနိုင်ငံအတွက် ထိပ်တန်း Crypto Casino ပလက်ဖောင်းဖြစ်ပါသည်။ Bitcoin, USDT စသည့် cryptocurrency ဖြင့် ငွေသွင်း/ထုတ်လုပ်နိုင်ပြီး အောက်ပါ စလော့ဂိမ်းအမျိုးအစားများကို ကစားနိုင်ပါသည်။
-                </p>
-
-                <section id="video-slots" class="pt-6">
-                    <h2 class="text-2xl font-bold text-yellow-400 mt-10 mb-4">Video Slots (ဗီဒီယိုစလော့)</h2>
-                    <p class="text-gray-300 mb-4">ခေတ်မီ ဂရပ်ဖစ်နှင့် ထူးခြားသော feature များပါဝင်သည့် ဗီဒီယိုစလော့ဂိမ်းများ။</p>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-300">
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🎰 Fortune Tiger</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🎰 Gates of Olympus</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🎰 Sweet Bonanza</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🎰 Starlight Princess</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🎰 Sugar Rush</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🎰 Wild West Gold</li>
-                    </ul>
-                </section>
-
-                <section id="classic-slots" class="pt-6">
-                    <h2 class="text-2xl font-bold text-yellow-400 mt-10 mb-4">Classic Slots (ဂန္တဝင်စလော့)</h2>
-                    <p class="text-gray-300 mb-4">ရိုးရှင်းပြီး ကစားရလွယ်ကူသော 3-reel နှင့် 5-reel ဂန္တဝင်စလော့များ။</p>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-300">
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🍒 Fruit Party</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🍒 Lucky 7</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🍒 Double Diamond</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🍒 Mega Joker</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🍒 Fire Joker</li>
-                    </ul>
-                </section>
-
-                <section id="buffalo-slots" class="pt-6">
-                    <h2 class="text-2xl font-bold text-yellow-400 mt-10 mb-4">Buffalo Slots (နီလိုက်/နီကျား)</h2>
-                    <p class="text-gray-300 mb-4">မြန်မာကစားသူများ လူကြိုက်များသော သဘာဝအကြောင်းအရာ Buffalo စလော့ဂိမ်းများ။</p>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-300">
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🦬 Buffalo King</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🦬 Buffalo Gold</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🦬 Buffalo Trail</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🦬 Great Rhino Megaways</li>
-                    </ul>
-                </section>
-
-                <section id="fishing-games" class="pt-6">
-                    <h2 class="text-2xl font-bold text-yellow-400 mt-10 mb-4">ငါးပစ်ဂိမ်း (Fishing Games)</h2>
-                    <p class="text-gray-300 mb-4">Skill + Luck ပေါင်းစပ်ထားသော ငါးပစ်ဂိမ်းများ။</p>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-300">
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🐟 Ocean King</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🐟 Fishing God</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🐟 Golden Dragon Fishing</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🐟 Mega Fishing</li>
-                    </ul>
-                </section>
-
-                <section id="jackpot-slots" class="pt-6">
-                    <h2 class="text-2xl font-bold text-yellow-400 mt-10 mb-4">ဂျက်ပေါ့ စလော့ (Jackpot Slots)</h2>
-                    <p class="text-gray-300 mb-4">ကြီးမားသော ဂျက်ပေါ့ဆုကြေးများ ရရှိနိုင်သည့် စလော့ဂိမ်းများ။</p>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-300">
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">💰 Mega Moolah</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">💰 Divine Fortune</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">💰 Mega Fortune</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">💰 Hall of Gods</li>
-                    </ul>
-                </section>
-
-                <section id="live-casino" class="pt-6">
-                    <h2 class="text-2xl font-bold text-yellow-400 mt-10 mb-4">Live Casino & အခြား</h2>
-                    <p class="text-gray-300 mb-4">Myan66 တွင် စလော့အပြင် Live Baccarat၊ Roulette၊ Dragon Tiger စသည့် ဂိမ်းများလည်း ရှိပါသည်။</p>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-300">
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🃏 Live Baccarat</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🎡 Roulette</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🐉 Dragon Tiger</li>
-                        <li class="game-card flex items-center p-3 bg-gray-800 rounded-lg border border-gray-700">🃏 Sic Bo</li>
-                    </ul>
-                </section>
-
-                <div class="mt-12 p-6 bg-gray-800 rounded-xl border border-yellow-500/30 text-center">
-                    <p class="text-gray-300 mb-4">Myan66 သည် cryptocurrency ဖြင့် ငွေသွင်း/ထုတ်လုပ်နိုင်ပြီး မြန်မာနိုင်ငံအတွက် လုံခြုံစိတ်ချရသော Crypto Casino ပလက်ဖောင်းဖြစ်ပါသည်။</p>
-                    <a href="index.html#myan66" class="inline-flex items-center justify-center bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-200">
-                        <span class="mr-2">ပင်မစာမျက်နှာသို့ ပြန်သွားရန်</span>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0L5.293 12.293a1 1 0 011.414-1.414L8 12.586V4a1 1 0 012 0v8.586l2.293-2.293a1 1 0 011.414 1.414l-3 3z" clip-rule="evenodd"/></svg>
-                    </a>
+    <main class="max-w-7xl mx-auto px-4 pb-12">
+        <!-- Hero Banner -->
+        <div class="relative w-full h-48 md:h-64 lg:h-80 overflow-hidden rounded-xl mt-4">
+            <img src="assets/myan66/hero-banner.jpg" alt="Casino Banner" class="w-full h-full object-cover" loading="eager">
+            <div class="absolute inset-0 bg-gradient-to-r from-[hsl(var(--background))]/80 to-transparent flex items-center">
+                <div class="pl-6 md:pl-12">
+                    <h2 class="text-2xl md:text-4xl font-bold gold-text mb-2">ကြိုဆိုပါတယ်</h2>
+                    <p class="text-white/80 text-sm md:text-base max-w-md">အကောင်းဆုံး စလော့ဂိမ်းများကို ကစားပြီး ဆုလာဘ်များ ရယူလိုက်ပါ</p>
                 </div>
-            </article>
+            </div>
         </div>
+
+        <!-- ဟော့ဂိမ်းများ -->
+        <section class="py-6">
+            <div class="flex items-center gap-3 mb-5">
+                <span class="text-2xl">🔥</span>
+                <h2 class="text-xl font-bold text-[hsl(var(--foreground))]">ဟော့ဂိမ်းများ</h2>
+            </div>
+            <div class="bg-[hsl(var(--card))] rounded-xl p-4 md:p-6 border border-[hsl(var(--border))]">
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-4">
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game1.jpg" alt="Gates of Olympus" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Gates of Olympus</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game2.jpg" alt="Gold Rush" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Gold Rush</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game5.jpg" alt="Starlight Princess" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Starlight Princess</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game11.jpg" alt="Money Coming" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Money Coming</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game6.jpg" alt="Super Ace" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Super Ace</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game4.jpg" alt="Sweet Bonanza" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Sweet Bonanza</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game8.jpg" alt="Mahjong Ways" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Mahjong Ways</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game12.jpg" alt="Fortune Gems" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Fortune Gems</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game7.jpg" alt="Fortune Rabbit" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Fortune Rabbit</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game10.jpg" alt="Golden Empire" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Golden Empire</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game3.jpg" alt="Fortune Dragon" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Fortune Dragon</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game9.jpg" alt="Aviator" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Aviator</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- စလော့ -->
+        <section class="py-6">
+            <div class="flex items-center gap-3 mb-5">
+                <span class="text-2xl">🎰</span>
+                <h2 class="text-xl font-bold text-[hsl(var(--foreground))]">စလော့</h2>
+            </div>
+            <div class="bg-[hsl(var(--card))] rounded-xl p-4 md:p-6 border border-[hsl(var(--border))]">
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-4">
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game7.jpg" alt="Fortune Rabbit" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Fortune Rabbit</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game8.jpg" alt="Mahjong Ways" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Mahjong Ways</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game12.jpg" alt="Fortune Gems" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Fortune Gems</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game1.jpg" alt="Gates of Olympus" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Gates of Olympus</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game10.jpg" alt="Golden Empire" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Golden Empire</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game6.jpg" alt="Super Ace" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Super Ace</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- လူကြိုက်များ -->
+        <section class="py-6">
+            <div class="flex items-center gap-3 mb-5">
+                <span class="text-2xl">⭐</span>
+                <h2 class="text-xl font-bold text-[hsl(var(--foreground))]">လူကြိုက်များ</h2>
+            </div>
+            <div class="bg-[hsl(var(--card))] rounded-xl p-4 md:p-6 border border-[hsl(var(--border))]">
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-4">
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game4.jpg" alt="Sweet Bonanza" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Sweet Bonanza</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game3.jpg" alt="Fortune Dragon" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Fortune Dragon</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game5.jpg" alt="Starlight Princess" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Starlight Princess</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game2.jpg" alt="Gold Rush" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Gold Rush</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game11.jpg" alt="Money Coming" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Money Coming</span>
+                    </button>
+                    <button type="button" onclick="openDialog()" class="group flex flex-col items-center gap-2 game-card-hover cursor-pointer text-left">
+                        <div class="w-full aspect-square rounded-lg overflow-hidden border-2 border-[hsl(var(--border))] group-hover:border-[hsl(var(--primary))] transition-colors">
+                            <img src="assets/myan66/game9.jpg" alt="Aviator" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <span class="text-sm font-medium text-center leading-tight">Aviator</span>
+                    </button>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <footer class="border-t border-[hsl(var(--border))] py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-[hsl(var(--muted-foreground))] text-sm">
+            <p>© 2026 MYAN66 - အခွင့်အရေးအားလုံး ရယူထားသည်</p>
+            <p class="mt-2"><a href="index.html" class="text-[hsl(var(--primary))] hover:underline">Myanmar Slots ပင်မစာမျက်နှာသို့ ပြန်သွားရန်</a></p>
+        </div>
+    </footer>
+
+    <!-- Modal: အသိပေးချက် -->
+    <div id="notice-dialog" role="dialog" aria-modal="true" aria-labelledby="notice-title" class="fixed inset-0 z-[100] hidden items-center justify-center p-4" data-dialog-backdrop>
+        <div class="absolute inset-0 bg-black/60" onclick="closeDialog()"></div>
+        <div class="relative bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-xl max-w-sm w-full p-6 shadow-xl">
+            <h3 id="notice-title" class="text-lg font-bold text-[hsl(var(--primary))] text-center">အသိပေးချက်</h3>
+            <p class="text-center text-[hsl(var(--foreground))] text-base pt-4">သင်သည် မည်သည့်အမှတ်မျှ မဖြည့်သွင်းရသေးပါ။</p>
+            <div class="flex justify-center pt-6">
+                <button type="button" onclick="closeDialog()" class="px-8 py-2 rounded-lg font-semibold bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:opacity-90">အိုကေ</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openDialog() {
+            document.getElementById('notice-dialog').classList.remove('hidden');
+            document.getElementById('notice-dialog').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeDialog() {
+            document.getElementById('notice-dialog').classList.add('hidden');
+            document.getElementById('notice-dialog').classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+    </script>
 </body>
 </html>
