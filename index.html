@@ -89,11 +89,26 @@
         section[id] {
             scroll-margin-top: 5rem; /* Adjust this value based on your header's height */
         }
-        /* 主頁 Hero 最大張背景圖：手機版確保顯示 */
-        @media (max-width: 768px) {
-            main > section:first-of-type { min-height: 40vh; }
+        /* 主頁 Hero 最大張背景圖：用 section 背景圖強制顯示（含手機） */
+        #hero-section {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/image/background-image-1.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
-        .hero-bg-image { display: block !important; visibility: visible !important; z-index: 1; }
+        @media (max-width: 768px) {
+            #hero-section { min-height: 50vh; }
+        }
+        /* 改用 section 背景後，避免 img 重複顯示 */
+        #hero-section .hero-bg-image { display: none !important; }
+        /* Top Slots 區大背景圖也用 CSS 背景確保顯示 */
+        #top-slots {
+            background-image: url('assets/image/background-image-2.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #top-slots .hero-bg-image { display: none !important; }
     </style>
 
     <!-- JSON-LD SCHEMA (Organization + Website + Breadcrumb + Collection + FAQ) -->
@@ -270,8 +285,8 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="relative bg-gray-900 pt-20 py-16 md:py-24 overflow-hidden border-b-4 border-yellow-500">
-            <img src="assets/image/background-image-1.webp" alt="Abstract background with glowing slot machine elements" class="hero-bg-image absolute inset-0 w-full h-full object-cover opacity-30" fetchpriority="high" loading="eager">
+        <section id="hero-section" class="relative bg-gray-900 pt-20 py-16 md:py-24 overflow-hidden border-b-4 border-yellow-500">
+            <img src="assets/image/background-image-1.webp" alt="Abstract background with glowing slot machine elements" class="hero-bg-image absolute inset-0 w-full h-full object-cover opacity-30" fetchpriority="high" loading="eager" role="presentation">
             <div class="container mx-auto px-4 text-center relative z-10">
                 <p class="text-lg font-semibold text-green-400 mb-2">မြန်မာ အွန်လိုင်းဂိမ်း လမ်းညွှန်</p>
                 <h1 class="text-4xl sm:text-6xl font-extrabold mb-4 text-white">
